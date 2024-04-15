@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AppRoutes from './appRoutes';
-import AuthorizeRoute from './components/api-authorization/authorizeRoute';
+import AuthorizeRoute from './api-authorization/authorizeRoute';
 import { AuthProvider } from './contexts/authContext';
 import Layout from './components/layout';
 import './custom.css';

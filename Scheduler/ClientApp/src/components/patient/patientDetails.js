@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import appointmentService from "../services/appointmentService";
 import Loader from "../common/loader";
 import AppointmentTable from "../appointment/appointmentTable";
+import appointmentService from "../../services/appointmentService";
 
 const PatientDetails = ({ patient }) => {
     const [appointments, setAppointments] = useState([]);

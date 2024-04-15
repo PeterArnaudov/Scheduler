@@ -3,7 +3,7 @@ import { Button, Card, CardBody, CardHeader, CardTitle, Form } from "reactstrap"
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from "../common/loader";
-import doctorService from "../services/doctorService";
+import doctorService from "../../services/doctorService";
 import TextInput from "../common/inputs/textInput";
 
 const DoctorCreate = ({ onDoctorCreate, onCancelClick }) => {

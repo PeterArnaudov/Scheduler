@@ -2,7 +2,7 @@ import { React, useEffect, useState } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import AppointmentList from '../appointment/appointmentList';
 import Loader from '../common/loader';
-import doctorService from '../services/doctorService';
+import doctorService from '../../services/doctorService';
 
 const DoctorDetails = ({ doctor, onSelectDoctor, onSelectAppointment }) => {
     const navigate = useNavigate();

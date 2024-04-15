@@ -1,5 +1,5 @@
 import { useState } from "react";
-import appointmentTypeService from "../services/appointmentTypeService";
+import appointmentTypeService from "../../services/appointmentTypeService";
 import { toast } from "react-toastify";
 import { Button, Card, CardBody, CardHeader, CardTitle, Form } from "reactstrap";
 import Loader from "../common/loader";

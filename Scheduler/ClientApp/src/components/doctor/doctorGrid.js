@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Doctor from "./doctor";
 import Loader from "../common/loader";
-import doctorService from "../services/doctorService";
 import { useAuth } from "../../contexts/authContext";
 import { Button } from "reactstrap";
 import DoctorCreate from "./doctorCreate";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
+import doctorService from "../../services/doctorService";
 
 const DoctorGrid = ({ onSelectDoctor, onSelectAppointment, fetchDoctors }) => {
     const { user } = useAuth();

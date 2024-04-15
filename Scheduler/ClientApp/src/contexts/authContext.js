@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import authService from '../components/api-authorization/authorizeService';
-import { ClaimKeys, Roles } from '../components/api-authorization/apiAuthorizationConstants';
+import authService from '../api-authorization/authorizeService';
+import { ClaimKeys, Roles } from '../api-authorization/apiAuthorizationConstants';
 
 const AuthContext = createContext();
 

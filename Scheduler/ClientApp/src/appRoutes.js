@@ -1,5 +1,5 @@
 import AdminContainer from './components/admin/adminContainer';
-import ApiAuthorzationRoutes from './components/api-authorization/apiAuthorizationRoutes';
+import ApiAuthorzationRoutes from './api-authorization/apiAuthorizationRoutes';
 import ClinicContainer from './components/clinic/clinicContainer';
 import NotFound from './components/common/notFound';
 import DoctorContainer from './components/doctor/doctorContainer';

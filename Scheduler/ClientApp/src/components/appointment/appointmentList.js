@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { extractDate, formatDate } from "../../helpers/formatters/dateFormatter";
 import Appointment from "./appointment";
 import { toast } from "react-toastify";
-import appointmentService from "../services/appointmentService";
+import appointmentService from "../../services/appointmentService";
 import Loader from "../common/loader";
 
 const AppointmentList = ({ doctorName, onSelectAppointment }) => {

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { Button, Form } from "reactstrap";
 import Loader from "../common/loader";
-import appointmentService from "../services/appointmentService";
+import appointmentService from "../../services/appointmentService";
 import CheckboxInput from "../common/inputs/checkboxInput";
 import DateTimeInput from "../common/inputs/dateTimeInput";
 import SelectInput from "../common/inputs/selectInput";

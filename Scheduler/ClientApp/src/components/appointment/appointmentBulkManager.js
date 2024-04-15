@@ -4,7 +4,7 @@ import { useState } from "react";
 import DateTimeInput from "../common/inputs/dateTimeInput";
 import SelectInput from "../common/inputs/selectInput";
 import NumberInput from "../common/inputs/numberInput";
-import appointmentService from "../services/appointmentService";
+import appointmentService from "../../services/appointmentService";
 import { toast } from "react-toastify";
 
 const AppointmentBulkManager = ({ doctorOptions, setAppointments, onCancelClick, className }) => {

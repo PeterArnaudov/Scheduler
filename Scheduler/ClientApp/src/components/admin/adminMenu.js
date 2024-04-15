@@ -4,8 +4,8 @@ import DoctorGrid from "../doctor/doctorGrid";
 import AppointmentSchedule from "../appointment/appointmentSchedule";
 import PatientContainer from "../patient/patientContainer";
 import AppointmentTypeContainer from "../appointmentTypes/appointmentTypeContainer";
-import doctorService from "../services/doctorService";
 import Dashboard from "./dashboard/dashboard";
+import doctorService from "../../services/doctorService";
 
 const AdminMenu = () => {
     const [activeSection, setActiveSection] = useState(null);

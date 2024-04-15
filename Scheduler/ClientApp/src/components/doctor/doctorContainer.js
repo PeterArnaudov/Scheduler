@@ -3,7 +3,7 @@ import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 import AppointmentForm from "../appointment/appointmentForm";
 import DoctorDetails from "./doctorDetails";
 import DoctorGrid from "./doctorGrid";
-import doctorService from "../services/doctorService";
+import doctorService from "../../services/doctorService";
 
 const DoctorContainer = () => {
     const navigate = useNavigate();

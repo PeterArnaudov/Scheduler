@@ -6,7 +6,7 @@ import { Alert, Button, FormGroup } from "reactstrap";
 import { extractDate, extractHour } from "../../helpers/formatters/dateFormatter";
 import StepList from "../common/stepList";
 import Loader from "../common/loader";
-import appointmentTypeService from "../services/appointmentTypeService";
+import appointmentTypeService from "../../services/appointmentTypeService";
 import TextInput from "../common/inputs/textInput";
 
 const AppointmentForm = ({ doctor, selectedAppointment }) => {

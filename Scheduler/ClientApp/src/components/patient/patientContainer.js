@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import patientService from "../services/patientService";
+import patientService from "../../services/patientService";
 import { toast } from "react-toastify";
 import PatientList from "./patientList";
 import Loader from "../common/loader";

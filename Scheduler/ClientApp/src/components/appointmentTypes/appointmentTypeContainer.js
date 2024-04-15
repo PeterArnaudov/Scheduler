@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import appointmentTypeService from "../services/appointmentTypeService";
+import appointmentTypeService from "../../services/appointmentTypeService";
 import { toast } from "react-toastify";
 import AppointmentTypeList from "./appointmentTypeList";
-import doctorService from "../services/doctorService";
+import doctorService from "../../services/doctorService";
 import { Button } from "reactstrap";
 import AppointmentTypeCreate from "./appointmentTypeCreate";
 
