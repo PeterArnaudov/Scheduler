@@ -30,6 +30,14 @@ namespace Scheduler.Controllers
         {
             try
             {
+                if (string.IsNullOrEmpty(request.ClinicId))
+                {
+                    if (!ClinicIdHelper.TryGetCurrentClinicId(out var clinicId))
+                    {
+                        throw new Exception($"{nameof(clinicId)} cannot be null or empty.");
+                    }
+                }
+
                 var doctors = doctorService.GetDoctors<EarliestAppointmentDoctorDto>(request);
 
                 return Ok(Result<IEnumerable<EarliestAppointmentDoctorDto>>.Ok(doctors));

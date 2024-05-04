@@ -6,6 +6,7 @@ using Scheduler.Services.Models.Responses;
 using Scheduler.Constants;
 using Scheduler.Data.Data.Models;
 using Scheduler.Services.Interfaces;
+using Scheduler.Services.Helpers;
 
 namespace Scheduler.Controllers
 {
@@ -25,10 +26,18 @@ namespace Scheduler.Controllers
         [HttpPost("search")]
         [Authorize(PolicyNames.ClinicAdmin)]
         public IActionResult Search(
-            PatientSearchRequest request)
+            PatientSearchRequest? request)
         {
             try
             {
+                request ??= new PatientSearchRequest();
+
+                if (!ClinicIdHelper.TryGetCurrentClinicId(out var clinicId))
+                {
+                    throw new Exception($"{nameof(clinicId)} cannot be null or empty.");
+                }
+
+                request.ClinicId = clinicId;
                 var patients = patientService.GetPatients<PatientDto>(request);
 
                 return Ok(Result<IEnumerable<PatientDto>>.Ok(patients));

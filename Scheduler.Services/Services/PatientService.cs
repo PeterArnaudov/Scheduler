@@ -36,13 +36,6 @@ namespace Scheduler.Services.Services
         public IEnumerable<T> GetPatients<T>(
             PatientSearchRequest request)
         {
-            if (!ClinicIdHelper.TryGetCurrentClinicId(out var clinicId))
-            {
-                throw new Exception($"{nameof(clinicId)} cannot be null or empty.");
-            }
-
-            request.ClinicId = clinicId;
-
             return patientRepository.AllAsNoTracking()
                 .Specify(request.ToSpecifications().ToArray())
                 .To<T>()
