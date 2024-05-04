@@ -4,6 +4,7 @@
 /node_modules
 
 # js
+*.js
 *.js.map
 
 # testing
