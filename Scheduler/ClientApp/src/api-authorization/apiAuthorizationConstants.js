@@ -1,47 +1,41 @@
-export const ApplicationName = 'Scheduler';
-
-export const QueryParameterNames = {
-  ReturnUrl: 'returnUrl',
-  Message: 'message'
+export var ApplicationName = 'Scheduler';
+export var QueryParameterNames = {
+    ReturnUrl: 'returnUrl',
+    Message: 'message'
 };
-
-export const LogoutActions = {
-  LogoutCallback: 'logout-callback',
-  Logout: 'logout',
-  LoggedOut: 'logged-out'
+export var LogoutActions = {
+    LogoutCallback: 'logout-callback',
+    Logout: 'logout',
+    LoggedOut: 'logged-out'
 };
-
-export const LoginActions = {
-  Login: 'login',
-  LoginCallback: 'login-callback',
-  LoginFailed: 'login-failed',
-  Profile: 'profile',
-  Register: 'register'
+export var LoginActions = {
+    Login: 'login',
+    LoginCallback: 'login-callback',
+    LoginFailed: 'login-failed',
+    Profile: 'profile',
+    Register: 'register'
 };
-
-const prefix = '/authentication';
-
-export const ApplicationPaths = {
-  DefaultLoginRedirectPath: '/',
-  ApiAuthorizationClientConfigurationUrl: `_configuration/${ApplicationName}`,
-  ApiAuthorizationPrefix: prefix,
-  Login: `${prefix}/${LoginActions.Login}`,
-  LoginFailed: `${prefix}/${LoginActions.LoginFailed}`,
-  LoginCallback: `${prefix}/${LoginActions.LoginCallback}`,
-  Register: `${prefix}/${LoginActions.Register}`,
-  Profile: `${prefix}/${LoginActions.Profile}`,
-  LogOut: `${prefix}/${LogoutActions.Logout}`,
-  LoggedOut: `${prefix}/${LogoutActions.LoggedOut}`,
-  LogOutCallback: `${prefix}/${LogoutActions.LogoutCallback}`,
-  IdentityRegisterPath: 'Identity/Account/Register',
-  IdentityManagePath: 'Identity/Account/Manage'
+var prefix = '/authentication';
+export var ApplicationPaths = {
+    DefaultLoginRedirectPath: '/',
+    ApiAuthorizationClientConfigurationUrl: "_configuration/".concat(ApplicationName),
+    ApiAuthorizationPrefix: prefix,
+    Login: "".concat(prefix, "/").concat(LoginActions.Login),
+    LoginFailed: "".concat(prefix, "/").concat(LoginActions.LoginFailed),
+    LoginCallback: "".concat(prefix, "/").concat(LoginActions.LoginCallback),
+    Register: "".concat(prefix, "/").concat(LoginActions.Register),
+    Profile: "".concat(prefix, "/").concat(LoginActions.Profile),
+    LogOut: "".concat(prefix, "/").concat(LogoutActions.Logout),
+    LoggedOut: "".concat(prefix, "/").concat(LogoutActions.LoggedOut),
+    LogOutCallback: "".concat(prefix, "/").concat(LogoutActions.LogoutCallback),
+    IdentityRegisterPath: 'Identity/Account/Register',
+    IdentityManagePath: 'Identity/Account/Manage'
 };
-
-export const ClaimKeys = {
-  Role: 'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
+export var ClaimKeys = {
+    Role: 'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
 };
-
-export const Roles = {
-  Admin: 'Admin',
-  ClinicAdmin: 'ClinicAdmin'
+export var Roles = {
+    Admin: 'Admin',
+    ClinicAdmin: 'ClinicAdmin'
 };
+//# sourceMappingURL=apiAuthorizationConstants.js.map

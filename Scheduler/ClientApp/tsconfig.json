@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+      "sourceMap": true,
+      "target": "es5",                    /* Specify ECMAScript target version */
+      "module": "esnext",                 /* Specify module code generation */
+      "strict": true,                     /* Enable all strict type-checking options */
+      "jsx": "react",                     /* Specify JSX as the input file type */
+      "moduleResolution": "node",         /* Specify module resolution strategy */
+      "noImplicitAny": true,
+      "strictNullChecks": true,
+      "esModuleInterop": true,            /* Enable compatibility with CommonJS modules */
+      "skipLibCheck": true,               /* Skip type checking of declaration files */
+      "forceConsistentCasingInFileNames": true, /* Ensure consistent casing in file names */
+      "importHelpers": true
+    },
+    "include": [
+      "src/**/*.ts",                      /* Include TypeScript files in 'src' directory */
+      "src/**/*.tsx",                     /* Include TypeScript JSX files in 'src' directory */
+      "public/**/*.ts",                   /* Include TypeScript files in 'public' directory */
+      "public/**/*.tsx"                   /* Include TypeScript JSX files in 'public' directory */
+    ],
+    "exclude": [
+      "node_modules"                      /* Exclude 'node_modules' directory */
+    ]
+  }
+  

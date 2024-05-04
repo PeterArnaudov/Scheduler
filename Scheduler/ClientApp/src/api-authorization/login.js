@@ -1,12 +1,11 @@
+import { __awaiter, __generator } from "tslib";
 import React, { useEffect, useState } from 'react';
 import authService, { AuthenticationResultStatus } from './authorizeService';
 import { LoginActions, QueryParameterNames, ApplicationPaths } from './apiAuthorizationConstants';
-
-const Login = (props) => {
-    const [message, setMessage] = useState(undefined);
-
-    useEffect(() => {
-        const action = props.action;
+var Login = function (props) {
+    var _a = useState(undefined), message = _a[0], setMessage = _a[1];
+    useEffect(function () {
+        var action = props.action;
         switch (action) {
             case LoginActions.Login:
                 login(getReturnUrl());
@@ -15,8 +14,8 @@ const Login = (props) => {
                 processLoginCallback();
                 break;
             case LoginActions.LoginFailed:
-                const params = new URLSearchParams(window.location.search);
-                const error = params.get(QueryParameterNames.Message);
+                var params = new URLSearchParams(window.location.search);
+                var error = params.get(QueryParameterNames.Message);
                 setMessage(error);
                 break;
             case LoginActions.Profile:
@@ -26,86 +25,108 @@ const Login = (props) => {
                 redirectToRegister();
                 break;
             default:
-                throw new Error(`Invalid action '${action}'`);
+                throw new Error("Invalid action '".concat(action, "'"));
         }
     }, [props.action]);
-
-    const login = async (returnUrl) => {
-        const state = { returnUrl };
-        const result = await authService.signIn(state);
-        switch (result.status) {
-            case AuthenticationResultStatus.Redirect:
-                break;
-            case AuthenticationResultStatus.Success:
-                await navigateToReturnUrl(returnUrl);
-                break;
-            case AuthenticationResultStatus.Fail:
-                setMessage(result.message);
-                break;
-            default:
-                throw new Error(`Invalid status result ${result.status}.`);
-        }
-    };
-
-    const processLoginCallback = async () => {
-        const url = window.location.href;
-        const result = await authService.completeSignIn(url);
-        switch (result.status) {
-            case AuthenticationResultStatus.Redirect:
-                throw new Error('Should not redirect.');
-            case AuthenticationResultStatus.Success:
-                await navigateToReturnUrl(getReturnUrl(result.state));
-                break;
-            case AuthenticationResultStatus.Fail:
-                setMessage(result.message);
-                break;
-            default:
-                throw new Error(`Invalid authentication result status '${result.status}'.`);
-        }
-    };
-
-    const getReturnUrl = (state) => {
-        const params = new URLSearchParams(window.location.search);
-        const fromQuery = params.get(QueryParameterNames.ReturnUrl);
-        if (fromQuery && !fromQuery.startsWith(`${window.location.origin}/`)) {
+    var login = function (returnUrl) { return __awaiter(void 0, void 0, void 0, function () {
+        var state, result, _a;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    state = { returnUrl: returnUrl };
+                    return [4 /*yield*/, authService.signIn(state)];
+                case 1:
+                    result = _b.sent();
+                    _a = result.status;
+                    switch (_a) {
+                        case AuthenticationResultStatus.Redirect: return [3 /*break*/, 2];
+                        case AuthenticationResultStatus.Success: return [3 /*break*/, 3];
+                        case AuthenticationResultStatus.Fail: return [3 /*break*/, 5];
+                    }
+                    return [3 /*break*/, 6];
+                case 2: return [3 /*break*/, 7];
+                case 3: return [4 /*yield*/, navigateToReturnUrl(returnUrl)];
+                case 4:
+                    _b.sent();
+                    return [3 /*break*/, 7];
+                case 5:
+                    setMessage(result.message);
+                    return [3 /*break*/, 7];
+                case 6: throw new Error("Invalid status result ".concat(result.status, "."));
+                case 7: return [2 /*return*/];
+            }
+        });
+    }); };
+    var processLoginCallback = function () { return __awaiter(void 0, void 0, void 0, function () {
+        var url, result, _a;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    url = window.location.href;
+                    return [4 /*yield*/, authService.completeSignIn(url)];
+                case 1:
+                    result = _b.sent();
+                    _a = result.status;
+                    switch (_a) {
+                        case AuthenticationResultStatus.Redirect: return [3 /*break*/, 2];
+                        case AuthenticationResultStatus.Success: return [3 /*break*/, 3];
+                        case AuthenticationResultStatus.Fail: return [3 /*break*/, 5];
+                    }
+                    return [3 /*break*/, 6];
+                case 2: throw new Error('Should not redirect.');
+                case 3: return [4 /*yield*/, navigateToReturnUrl(getReturnUrl(result.state))];
+                case 4:
+                    _b.sent();
+                    return [3 /*break*/, 7];
+                case 5:
+                    setMessage(result.message);
+                    return [3 /*break*/, 7];
+                case 6: throw new Error("Invalid authentication result status '".concat(result.status, "'."));
+                case 7: return [2 /*return*/];
+            }
+        });
+    }); };
+    var getReturnUrl = function (state) {
+        var params = new URLSearchParams(window.location.search);
+        var fromQuery = params.get(QueryParameterNames.ReturnUrl);
+        if (fromQuery && !fromQuery.startsWith("".concat(window.location.origin, "/"))) {
             throw new Error("Invalid return url. The return url needs to have the same origin as the current page.");
         }
-        return (state && state.returnUrl) || fromQuery || `${window.location.origin}`;
+        return (state && state.returnUrl) || fromQuery || "".concat(window.location.origin);
     };
-
-    const redirectToRegister = () => {
-        redirectToApiAuthorizationPath(`${ApplicationPaths.IdentityRegisterPath}?${QueryParameterNames.ReturnUrl}=${encodeURI(ApplicationPaths.Login)}`);
+    var redirectToRegister = function () {
+        redirectToApiAuthorizationPath("".concat(ApplicationPaths.IdentityRegisterPath, "?").concat(QueryParameterNames.ReturnUrl, "=").concat(encodeURI(ApplicationPaths.Login)));
     };
-
-    const redirectToProfile = () => {
+    var redirectToProfile = function () {
         redirectToApiAuthorizationPath(ApplicationPaths.IdentityManagePath);
     };
-
-    const redirectToApiAuthorizationPath = (apiAuthorizationPath) => {
-        const redirectUrl = `${window.location.origin}/${apiAuthorizationPath}`;
+    var redirectToApiAuthorizationPath = function (apiAuthorizationPath) {
+        var redirectUrl = "".concat(window.location.origin, "/").concat(apiAuthorizationPath);
         window.location.replace(redirectUrl);
     };
-
-    const navigateToReturnUrl = async (returnUrl) => {
-        window.location.replace(returnUrl);
-    };
-
+    var navigateToReturnUrl = function (returnUrl) { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            window.location.replace(returnUrl);
+            return [2 /*return*/];
+        });
+    }); };
     if (!!message) {
-        return <div>{message}</div>;
-    } else {
-        const action = props.action;
+        return React.createElement("div", null, message);
+    }
+    else {
+        var action = props.action;
         switch (action) {
             case LoginActions.Login:
-                return (<div>Вписване...</div>);
+                return (React.createElement("div", null, "Logging in..."));
             case LoginActions.LoginCallback:
-                return (<div>Обработва се обратно извикване при влизане...</div>);
+                return (React.createElement("div", null, "Processing login callback..."));
             case LoginActions.Profile:
             case LoginActions.Register:
-                return (<div></div>);
+                return (React.createElement("div", null));
             default:
-                throw new Error(`Invalid action '${action}'`);
+                throw new Error("Invalid action '".concat(action, "'"));
         }
     }
 };
-
 export default Login;
+//# sourceMappingURL=login.js.map

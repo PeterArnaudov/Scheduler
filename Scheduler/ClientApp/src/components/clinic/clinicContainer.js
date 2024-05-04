@@ -1,6 +1,6 @@
-import React from 'react';
-// Define the ClinicContainer component with FunctionComponent type and props
+import React from "react";
 var ClinicContainer = function () {
-    return (React.createElement(React.Fragment, null));
+    return React.createElement(React.Fragment, null);
 };
 export default ClinicContainer;
+//# sourceMappingURL=clinicContainer.js.map

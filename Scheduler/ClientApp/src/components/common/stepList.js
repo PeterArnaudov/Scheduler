@@ -1,26 +1,15 @@
+import React from "react";
 import { Badge, Card, CardBody, CardGroup, CardHeader, CardSubtitle } from "reactstrap";
-
-const StepList = ({ steps }) => {
-    return (
-        <CardGroup>
-            {steps?.map((x, index) => (
-                <Card key={index} color="light">
-                    <CardHeader className="fw-bold">
-                        <Badge className="me-2" color="primary">
-                            {index + 1}
-                        </Badge>
-                        {x.title}
-                    </CardHeader>
-                    <CardBody>
-                        <CardSubtitle>
-                            {x.description}
-                        </CardSubtitle>
-                        {x.children}
-                    </CardBody>
-                </Card>
-            ))}
-        </CardGroup>
-    );
+;
+var StepList = function (_a) {
+    var steps = _a.steps;
+    return (React.createElement(CardGroup, null, steps === null || steps === void 0 ? void 0 : steps.map(function (x, index) { return (React.createElement(Card, { key: index, color: "light" },
+        React.createElement(CardHeader, { className: "fw-bold" },
+            React.createElement(Badge, { className: "me-2", color: "primary" }, index + 1),
+            x.title),
+        React.createElement(CardBody, null,
+            React.createElement(CardSubtitle, null, x.description),
+            x.children))); })));
 };
-
 export default StepList;
+//# sourceMappingURL=stepList.js.map

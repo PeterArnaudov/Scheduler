@@ -1,113 +1,97 @@
-export const formatDate = (datetimeString) => {
+import dayjs from 'dayjs';
+/**
+ * Formats the date with the given format.
+ * @param dateTime The date to be formatted.
+ * @returns The formatted date.
+ */
+export var formatDate = function (datetime, format) {
     try {
-        const isDateInCurrentWeek = (inputDate) => {
-            const currentDate = new Date();
-
-            // Calculate the start and end of the current week
-            const currentWeekStart = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - currentDate.getDay() + 1);
-            const currentWeekEnd = new Date(currentWeekStart);
-            currentWeekEnd.setDate(currentWeekStart.getDate() + 7);
-
-            // Check if the input date is within the current week
-            return inputDate >= currentWeekStart && inputDate <= currentWeekEnd;
-        };
-
-        const date = new Date(datetimeString);
-        var options = {};
-
-        if (!isDateInCurrentWeek(date)) {
-            // Date is not within the current week, format as "15.12 22:30"
-            options = {
-                day: '2-digit',
-                month: '2-digit',
-                hour: 'numeric',
-                minute: 'numeric',
-            };
-        } else {
-            // Date is within the current week, format accordingly
-            options = {
-                weekday: 'long',  // Displays the full name of the day of the week
-                hour: 'numeric',  // Displays the hour in 12-hour format
-                minute: 'numeric',  // Displays the minute
-            };
-        }
-
-        return new Intl.DateTimeFormat('bg', options).format(date);
+        return dayjs(datetime).format(format);
     }
     catch (error) {
-        console.error(error);
-
+        console.log(error);
         return '';
     }
 };
-
-export const formatDateTimeLocal = (dateTimeString) => {
+/**
+ * Formats the appointment date based on whether it's in the current week.
+ * @param dateTime The appointment date to be formatted.
+ * @returns The formatted date as "DD.MM HH:mm" or "dddd, HH:mm".
+ */
+export var formatAppointmentDate = function (dateTime) {
     try {
-
-        const date = new Date(dateTimeString);
-
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2, '0');
-        const hours = String(date.getHours()).padStart(2, '0');
-        const minutes = String(date.getMinutes()).padStart(2, '0');
-
-        return `${year}-${month}-${day}T${hours}:${minutes}`;
-    }
-    catch (error) {
-        console.error(error);
-
-        return '';
-    }
-}
-
-export const extractLongDate = (datetimeString) => {
-    try {
-        const date = new Date(datetimeString);
-        var options = {
-            day: '2-digit',
-            month: '2-digit',
-            year: 'numeric'
+        var isDateInCurrentWeek = function (inputDate) {
+            var currentDate = new Date();
+            // Calculate the start and end of the current week
+            var currentWeekStart = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - currentDate.getDay() + 1);
+            var currentWeekEnd = new Date(currentWeekStart);
+            currentWeekEnd.setDate(currentWeekStart.getDate() + 7);
+            // Check if the input date is within the current week
+            return inputDate >= currentWeekStart && inputDate <= currentWeekEnd;
         };
-
-        return new Intl.DateTimeFormat('bg', options).format(date);
+        return !isDateInCurrentWeek(dateTime)
+            ? dayjs(dateTime).format("DD.MM, HH:mm")
+            : dayjs(dateTime).format("dddd, HH:mm");
     }
     catch (error) {
         console.error(error);
-
         return '';
     }
-}
-
-export const extractDate = (datetimeString) => {
+};
+/**
+ * Formats the date as local string, "YYYY-MM-DDTHH:mm".
+ * @param dateTime The date to be formatted.
+ * @returns The formatted date as "YYYY-MM-DDTHH:mm".
+ */
+export var formatDateTimeLocal = function (dateTime) {
     try {
-        const date = new Date(datetimeString);
-        var options = {
-            day: '2-digit',
-            month: '2-digit',
-        };
-
-        return new Intl.DateTimeFormat('bg', options).format(date);
+        return dayjs(dateTime).format("YYYY-MM-DDTHH:mm");
     }
     catch (error) {
         console.error(error);
-
         return '';
     }
-}
-
-export const extractHour = (datetimeString) => {
+};
+/**
+ * Formats the date as "DD.MM.YYYY".
+ * @param dateTime The date to be formatted.
+ * @returns The formatted date as "DD.MM.YYYY".
+ */
+export var extractLongDate = function (dateTime) {
     try {
-        const date = new Date(datetimeString);
-
-        const hours = date.getHours().toString().padStart(2, '0');
-        const minutes = date.getMinutes().toString().padStart(2, '0');
-
-        return `${hours}:${minutes}`;
+        return dayjs(dateTime).format("DD.MM.YYYY");
     }
     catch (error) {
         console.error(error);
-
         return '';
     }
-}
+};
+/**
+ * Formats the date as "DD.MM".
+ * @param dateTime The date to be formatted.
+ * @returns The formatted date as "DD.MM".
+ */
+export var extractDate = function (datetime) {
+    try {
+        return dayjs(datetime).format("DD.MM");
+    }
+    catch (error) {
+        console.error(error);
+        return '';
+    }
+};
+/**
+ * Formats the date as "HH:mm".
+ * @param dateTime The date to be formatted.
+ * @returns The formatted date as "HH:mm".
+ */
+export var extractHour = function (datetime) {
+    try {
+        return dayjs(datetime).format("HH:mm");
+    }
+    catch (error) {
+        console.error(error);
+        return '';
+    }
+};
+//# sourceMappingURL=dateFormatter.js.map
